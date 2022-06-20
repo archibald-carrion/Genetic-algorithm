@@ -1,7 +1,10 @@
 #include "CyborgCreature.h"
 
-CyborgCreature::CyborgCreature()
+CyborgCreature::CyborgCreature(int attr[10])
 {
+    for(int counter=0; counter<QUANTITY_ATTRIBUTES; ++counter){
+        attributes[counter] = attr[counter];
+    }
 }
 
 CyborgCreature::~CyborgCreature()
