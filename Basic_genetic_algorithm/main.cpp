@@ -1,4 +1,4 @@
-#include "Creature.h"
+//#include "Creature.h"
 #include "Algorithm.h"
 #include<math.h>
 #include<random>
