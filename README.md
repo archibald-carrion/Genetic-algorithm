@@ -11,5 +11,6 @@ Most of the time, the genetic algorithms are used to solve optimization problems
 ## Usefull command line
 Use the following command to compile the code on Windows
 ```
-g++ main.cpp Algorithm.cpp
+g++ -o algo *.cpp
 ```
+For the moment the code doesn't need parameter at the momento of the execution, so we can easily execute the code with the following command line
