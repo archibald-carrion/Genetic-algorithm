@@ -80,3 +80,41 @@ Bigfoot::Bigfoot(int altura, int peso, int pelaje, int velocidad, int fuerza, in
         atributo[INTELLIGENCIA] = 0;
     }
 }
+
+
+/**
+ *  @brief El metodo mutar crea un Bigfoot identico al bigfoot "original" y lo hace mutar
+ *  @return El metodo devuelve un pointer hacia una criatura, la cual en ese caso es el Bigfoot mutado
+ **/
+Criatura *Bigfoot::mutar()
+{
+    Bigfoot *bigfootMutado = new Bigfoot(atributo[ALTURA], atributo[PESO], atributo[PELAJE], atributo[VELOCIDAD], atributo[FUERZA], atributo[INTELLIGENCIA]);
+
+    int cantidadMutaciones = (rand() % 6) + 1;
+    for (int counter = 0; counter < cantidadMutaciones; ++counter)
+    {
+        int modifier = (rand() % 100);
+
+        if (modifier % 2 == 0)
+        { // par   -> se suma el numero
+            modifier = (modifier % 10) + 1;
+        }
+        else
+        { // impar -> se resta el numero
+            modifier = (-1) * ((modifier % 10) + 1);
+        }
+        int indiceAtributo = rand() % 6;
+        bigfootMutado->atributo[indiceAtributo] += modifier;
+
+        // en casos de "overflow" o "underflow" se hace un redondeo hacia el extremo mas cercano
+        if (bigfootMutado->atributo[indiceAtributo] < 0)
+        {
+            bigfootMutado->atributo[indiceAtributo] = 0;
+        }
+        if (bigfootMutado->atributo[indiceAtributo] > 99)
+        {
+            bigfootMutado->atributo[indiceAtributo] = 99;
+        }
+    }
+    return bigfootMutado;
+}
