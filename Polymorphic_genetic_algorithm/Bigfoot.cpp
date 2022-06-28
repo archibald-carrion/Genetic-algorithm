@@ -118,3 +118,41 @@ Criatura *Bigfoot::mutar()
     }
     return bigfootMutado;
 }
+
+/**
+ *  @brief El metodo cruzar permite cruzar 2 Bigfoot
+ *  @param otra otra es un puntero que apunta a una instencia de Criatura, vamos a cruzar "this" con otra
+ *  @return El metodo devuelve un vector de criaturas (los hijos) que termina en 0
+ **/
+Criatura **Bigfoot::cruzar(Criatura *otra)
+{
+    Bigfoot **hijo = new Bigfoot *[3];
+    for (int counter = 0; counter < 2; ++counter)
+    {
+        int atrNew[6];
+        for (int counterAtr = 0; counterAtr < 6; ++counterAtr)
+        {
+            int herencia = rand() % 3;
+            if (herencia == 0)
+            { // se hace un promedio de este atributo
+                int atributoPromedio = ((this->atributo[counterAtr]) + (dynamic_cast<Bigfoot *>(otra->atributo[counterAtr]))) / 2;
+                atrNew[counterAtr] = atributoPromedio;
+            }
+            else
+            {
+                if (herencia == 1)
+                { // el atributo es igual a "otra"
+                    atrNew[counterAtr] = dynamic_cast<Bigfoot *>(otra->atributo[counterAtr]);
+                }
+                else
+                { // el atributo es igual a this
+                    atrNew[counterAtr] = this->atributo[counterAtr];
+                }
+            }
+        }
+        hijo[counter] = new Bigfoot(atrNew[ALTURA], atrNew[PESO], atrNew[PELAJE], atrNew[VELOCIDAD], atrNew[FUERZA], atrNew[INTELLIGENCIA]);
+    }
+    hijo[2] = 0;
+
+    return hijo;
+}
