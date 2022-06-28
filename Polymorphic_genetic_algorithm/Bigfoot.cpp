@@ -156,3 +156,15 @@ Criatura **Bigfoot::cruzar(Criatura *otra)
 
     return hijo;
 }
+
+/**
+ *  @brief descrp
+ *  @param param0 descrp
+ *  @param param1 descrp
+ *  @return descrp
+ **/
+Criatura *Bigfoot::clonar()
+{
+    Bigfoot *clon = new Bigfoot(atributo[ALTURA], atributo[PESO], atributo[PELAJE], atributo[VELOCIDAD], atributo[FUERZA], atributo[INTELLIGENCIA]);
+    return clon;
+}
