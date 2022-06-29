@@ -7,7 +7,8 @@ ColdMountain::ColdMountain()
 
 Criatura *ColdMountain::getCriatura()
 {
-  
+    Bigfoot *bigfoot = new Bigfoot();
+    return bigfoot;
 }
 
 double ColdMountain::fitness(Criatura *criatura)
