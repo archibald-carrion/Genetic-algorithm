@@ -3,6 +3,9 @@
 ## Preview of the project
 In this project i will development different genetic algorithm that allow us to solve some basic problem.
 Most of the time, the genetic algorithms are used to solve optimization problems.
+### The Basic_genetic_algorithm
+In this genetic algorithm I use a population of random numbers to find the square root of a given number.
+The "difficulty" must be given as a float number, this way if the difficulty is 0.01, the algorithm evolve util the best cantidate square root multiplied by himself have a difference to the given number inferior or iqual to 0.01.
 
 ## To-do list
 - [ ] finish Creature.h abstract struct
