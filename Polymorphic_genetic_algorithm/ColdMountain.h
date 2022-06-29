@@ -5,6 +5,9 @@
 
 class ColdMountain : public Ambiente
 {
-
+public:
+    ColdMountain();
+    Criatura *getCriatura();
+    double fitness(Criatura *);
 };
 #endif
