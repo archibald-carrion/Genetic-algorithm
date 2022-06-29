@@ -2,7 +2,7 @@
 #include "Fabrica.h"
 #include "Producto.h"
 #include "AlgoritmoGenetico.h"
-#include "Ambiente.h"
+#include "Ambiante.h"
 #include "Poblacion.h"
 #include <string>
 #include <iostream>
