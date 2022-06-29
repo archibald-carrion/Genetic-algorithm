@@ -1,6 +1,7 @@
 #ifndef AMBIENTE
 #define AMBIENTE
 #include "Criatura.h"
+#include "Producto.h"
 
 class Ambiente : public Producto {
 	public:
