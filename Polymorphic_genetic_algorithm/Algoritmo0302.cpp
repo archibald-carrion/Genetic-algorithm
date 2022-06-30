@@ -105,3 +105,35 @@ Poblacion *Algoritmo0302::evolucionar(Poblacion *unaPoblacion)
     
     // hay que crear una Poblacion con el contenido de poblacion
 }
+
+/**
+ *  @brief El metodo verificarCondicion25 verifica si la poblacion dada cumple con la condicion de tener por lo menos  25% de la poblacion con un fitness superior o igual al fitnessLimite
+ *  @param poblacionEstudiada poblacionEstudiada es un parametro de tipo Criatura** que representa la poblacion que se debe estudiar
+ *  @param fitness fitness es un double que representa el fitnessLimite al cual se debe comparar el fitness de cada elemento de la poblacion
+ *  @return El metodo devuelve un int, 0 si la poblacion no cumple con la condición, 1 si la poblacion cumple con la condición
+ **/
+int Algoritmo0302::verificarCondicion25(Criatura **poblacionEstudiada, double fitness)
+{
+    int poblacionSize = 0;
+    int counter = 0;
+    int cantidadCriaturasValidas = 0;
+    int condicionValida = 0;
+    Criatura *unaCriatura = poblacionEstudiada[0];
+    while (unaCriatura != 0)
+    {
+        ++poblacionSize;
+        unaCriatura = poblacionEstudiada[counter];
+        ++counter;
+        if (this->ambiente->fitness(unaCriatura) >= fitness)
+        {
+            ++cantidadCriaturasValidas;
+        }
+    }
+    int proporcion25 = (25 * poblacionSize) / 100; // para saber cual el 25% de la poblacion
+    if (cantidadCriaturasValidas >= proporcion25)
+    {
+        condicionValida = 1;
+    }
+    return condicionValida;
+}
+
