@@ -221,3 +221,19 @@ Criatura **Algoritmo0302::nuevaGeneracion(Criatura **poblacionPadre)
     return poblacionHija;
 }
 
+/**
+ *  @brief El metodo poblacionSize calcula la cantidad de criaturas en una Criatura**
+ *  @param poblacion poblacion es un parametro de tipo Criatura** que representa la poblacion de la cual hay que calcular el tamano
+ *  @return El metodo devuelve un int que contiene el tamano del Criatura** dado
+ **/
+int Algoritmo0302::poblacionSize(Criatura **poblacion)
+{
+    int size = 0;
+    Criatura *criatura = poblacion[size];
+    while (criatura != 0)
+    {
+        ++size;
+        criatura = poblacion[size];
+    }
+    return size;
+}
