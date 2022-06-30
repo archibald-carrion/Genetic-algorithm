@@ -137,3 +137,87 @@ int Algoritmo0302::verificarCondicion25(Criatura **poblacionEstudiada, double fi
     return condicionValida;
 }
 
+/**
+ *  @brief El metodo verificarCondicion25 verifica si la poblacion dada cumple con la condicion de tener por lo menos  25% de la poblacion con un fitness superior o igual al fitnessLimite
+ *  @param poblacionEstudiada poblacionEstudiada es un parametro de tipo Criatura** que representa la poblacion que se debe estudiar
+ *  @return El metodo devuelve un int, 0 si la poblacion no cumple con la condición, 1 si la poblacion cumple con la condición
+ **/
+Criatura **Algoritmo0302::nuevaGeneracion(Criatura **poblacionPadre)
+{
+    Criatura **poblacionHija;
+    int contadorPoblacionHija = 0;
+
+    int tamanoPoblacion = poblacionSize(poblacionPadre);
+    /*
+    int tamanoPoblacion = 0;
+    // int counter = 0;
+    Criatura *criatura = poblacionPadre[tamanoPoblacion];
+    while (criatura != 0)
+    {
+        ++tamanoPoblacion;
+        criatura = poblacionPadre[tamanoPoblacion];
+    }
+*/
+    if (tamanoPoblacion % 2 == 0) // es par
+    {
+        // se toma un par random y se reproducen
+        // cada hijo creado tiene 1/2 probabilidad de mutar
+        while (tamanoPoblacion != 0)
+        {
+            Criatura **hijo = poblacionPadre[tamanoPoblacion]->cruzar(poblacionPadre[--tamanoPoblacion]);
+            --tamanoPoblacion;
+            // hay que poner los hijos en el array hasta que sea ntodso puestos o que hay 100 en el array
+            int contador = 0;
+            while (hijo[contador] != 0 && poblacionSize(poblacionHija) > 100)
+            {
+                // hay una probabilidad sobre 2 que mute o no
+                int mutado = rand() % 2;
+                if (mutado)
+                {
+                    poblacionHija[contadorPoblacionHija] = hijo[contador]->mutar();
+                    // se inserta una version mutada del hijo[contador] en poblacionHija
+                }
+                else
+                {
+                    poblacionHija[contadorPoblacionHija] = hijo[contador];
+                    // se inserta la version no-mutada del hijo[contador] en poblacionHija
+                }
+                ++contador;
+                ++contadorPoblacionHija;
+            }
+        }
+    }
+    else // es impar
+    {
+        while (tamanoPoblacion != 1)
+        {
+            Criatura **hijo = poblacionPadre[tamanoPoblacion]->cruzar(poblacionPadre[--tamanoPoblacion]);
+            --tamanoPoblacion;
+            // hay que poner los hijos en el array hasta que sea ntodso puestos o que hay 100 en el array
+            int contador = 0;
+            while (hijo[contador] != 0 && poblacionSize(poblacionHija) > 100)
+            {
+                // hay una probabilidad sobre 2 que mute o no
+                int mutado = rand() % 2;
+                if (mutado)
+                {
+                    poblacionHija[contadorPoblacionHija] = hijo[contador]->mutar();
+                    // se inserta una version mutada del hijo[contador] en poblacionHija
+                }
+                else
+                {
+                    poblacionHija[contadorPoblacionHija] = hijo[contador];
+                    // se inserta la version no-mutada del hijo[contador] en poblacionHija
+                }
+                ++contador;
+                ++contadorPoblacionHija;
+            }
+        }
+        // se toma un par random y se reproducen
+        // cada hijo creado tiene 1/2 probabilidad de mutar
+        // si solo queda 1 elemento sin pajera, muere sin repoducirse
+    }
+
+    return poblacionHija;
+}
+
