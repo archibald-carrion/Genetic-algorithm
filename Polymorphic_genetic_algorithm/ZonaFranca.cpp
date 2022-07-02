@@ -7,6 +7,11 @@
 // Fabrica Ambiente de Criatura del estudiante EE del equipo QQ
 #include "FA0000.h" // Algorimto simple 
 #include "FC0000.h" // Criatura bichoRaro
+#include "FA0302.h"
+#include "FC0302.h"
+#include <string>
+using namespace std;
+
 void ZonaFranca::add(Fabrica * fabrica){
    if(cantidad < MAX_FABRICAS){
 	   this->fabrica[cantidad++]=fabrica;
@@ -15,9 +20,10 @@ void ZonaFranca::add(Fabrica * fabrica){
 
 ZonaFranca::ZonaFranca(){
 	cantidad = 0;
-	fabrica = new Fabrica * [MAX_FABRICAS];
 	add( new FA0000("simple"));
 	add( new FC0000("bichoRaro"));
+	add( new FA0302("FA0302"));
+	add( new FC0302("FC0302"));
 	
 	// Cada uno de ustedes debe agregar el suyo
 	// FAQQEE donde QQ numero
@@ -28,7 +34,6 @@ ZonaFranca::~ZonaFranca(){
 		   delete fabrica[i];
 	   }
    }	
-   delete [] fabrica;
 }
 Fabrica * ZonaFranca::getFabrica(string nombre){
 	Fabrica * actual = 0;
